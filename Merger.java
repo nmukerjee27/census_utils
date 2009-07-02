@@ -567,8 +567,8 @@ public class Merger {
 				"The first argument is the folder containing the census population data.\n" +
 				"The second argument is the folder containing the census state shapefiles.\n" +
 				"The folder and file names need to be identical to those downloaded\n" +
-				"from the Census website. This will merge all 50 states plus DC.\n");
-		
+				"from the Census website. This will merge all 50 states plus DC.\n" + 
+				"If you wish to only merge specific data, use this as a library.");
 	}
 	/**Merges all 50 states, given only two directory strings in the program arguments.*/
 	public static void main(String[] args){
