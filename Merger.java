@@ -567,13 +567,10 @@ public class Merger {
 				"The first argument is the folder containing the census population data.\n" +
 				"The second argument is the folder containing the census state shapefiles.\n" +
 				"The folder and file names need to be identical to those downloaded\n" +
-				"from the Census website. This will merge all 50 states plus DC.\n" +
-				"With no arguments, it reads file locations and instructions from standard input.");
+				"from the Census website. This will merge all 50 states plus DC.\n");
 		
 	}
-	/**Merges all 50 states, given only two directory strings in the program arguments.
-	 * Will later support interactive merging of a specific state from stdin. 
-	 */
+	/**Merges all 50 states, given only two directory strings in the program arguments.*/
 	public static void main(String[] args){
 		if(args == null || args.length<2 || args[0]==null || args[1]==null){
 			System.out.println("Copyright (C) 2009 Joshua Justice. Licensed under the GNU GPL.\n");
