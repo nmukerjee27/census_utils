@@ -34,7 +34,6 @@ public class Merger {
 	File combinedFile;
 	HashMap<String, Object[]> popRecords;
 	boolean useRace;
-	
 	private int countyShape;
 	private int countyPop=1;
 	private int tractShape;
@@ -436,10 +435,11 @@ public class Merger {
 	 * Set up a hashmap so we can have a faster matching algorithm.
 	 * The string key is the concatenation of:
 	 * county+tract+block
-	 * This should allow for much faster lookup. 
+	 * This allows for much faster lookup (total of linear time). 
 	 * 
 	 * However, due to memory restrictions, we can't really do it for the whole state.
 	 * If you really want to try, pass in "null" for countyNo.
+	 * Make sure to increase the JVM max heap size!
 	 * 
 	 */
 	private void setUpHashMap(boolean useRace, int capacity, String countyNo){
@@ -568,8 +568,9 @@ public class Merger {
 				"from the Census website. This will merge all 50 states plus DC.\n" + 
 				"If you wish to only merge specific data, use this as a library.");
 	}
-	/**Merges all 50 states, given only two directory strings in the program arguments.*/
+	
 	public static void main(String[] args){
+		/**Merges all 50 states, given only two directory strings in the program arguments.*/
 		if(args == null || args.length<2 || args[0]==null || args[1]==null){
 			System.out.println("Copyright (C) 2009 Joshua Justice. Licensed under the GNU GPL.\n");
 			mergerHelp();
