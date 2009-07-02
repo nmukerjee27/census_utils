@@ -1,2 +1,4 @@
-# Add the jars to the classpath.
-.jaddClassPath(file.path(system.file(package="CensusMerge"), "java"))
+# Set up the package
+.onLoad <- function(libname, pkgname){
+  .jpackage(pkgname, lib.loc=libname, jars='*')
+}
