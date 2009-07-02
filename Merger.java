@@ -8,7 +8,8 @@ import com.linuxense.javadbf.*;
 
 public class Merger {
 	/**	
-	 * Copyright (C) 2009 Joshua Justice
+	 * Copyright (C) 2009
+	 * @author Joshua Justice
 	 * This program is free software: you can redistribute it and/or modify
 	 * it under the terms of the GNU General Public License as published by
 	 * the Free Software Foundation, either version 3 of the License, or
@@ -46,8 +47,6 @@ public class Merger {
 	 * @param s The shapefile's location, as a String.
 	 * @param g The population header file's location, as a String. 
 	 * @param useRaceData Whether or not to use race data. A boolean.
-	 *
-	 * @author Joshua Justice
 	 * Joshua.Justice@gatech.edu
 	 */
 	public Merger(String s, String g, boolean useRaceData){
@@ -76,8 +75,6 @@ public class Merger {
 	 * @param s The shapefile.
 	 * @param g The population header file. 
 	 * @param useRaceData Whether or not to use race data. A boolean.
-	 *
-	 * @author Joshua Justice
 	 * Joshua.Justice@gatech.edu
 	 */
 	public Merger(File s, File g, boolean useRaceData){
