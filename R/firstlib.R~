@@ -1,5 +1,0 @@
-# Set up the package
-.First.lib <- function(lib,pkg){
-	.jpackage("CensusMerge", lib.loc='NULL', jars='*')
-	cat("CensusMerge has been loaded.\n")
-}
