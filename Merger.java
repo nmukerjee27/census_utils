@@ -574,6 +574,7 @@ public class Merger {
 		if(args == null || args.length<2 || args[0]==null || args[1]==null){
 			System.out.println("Copyright (C) 2009 Joshua Justice. Licensed under the GNU GPL.\n");
 			mergerHelp();
+			return;
 		}
 		HashMap<String, String[]> mappings = createMappings();
 		File popDir = new File(args[0]);
