@@ -444,7 +444,6 @@ public class Merger {
 	 * 
 	 */
 	private void setUpHashMap(boolean useRace, int capacity, String countyNo){
-
 		popRecords = new HashMap<String, Object[]>(capacity);
 		try{
 			popGeo.seek(0);
@@ -582,7 +581,6 @@ public class Merger {
 		
 		for(String stateNo: mappings.keySet()){
 			System.out.println("Beginning mergers on: " + mappings.get(stateNo)[0]);
-			
 			String sf = "tl_2008_" + stateNo + "_tabblock00.dbf";
 			File shapeFile = new File(shpDir, sf);
 			File popState = new File(popDir, mappings.get(stateNo)[0]);
@@ -595,9 +593,5 @@ public class Merger {
 			m_nd.merge(null);
 			m_all.merge(null);
 		}
-		
-		
-		
-		
 	}
 }
