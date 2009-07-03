@@ -447,11 +447,12 @@ public class Merger {
 			if(useRace){
 				record = addRaceToGeo(record, pop1Line, pop2Line);
 			}
-			key = ""+record[countyPop]+record[tractPop]+record[blockPop];
-			popRecords.put(key, record);
-			count++;
 			if(record==null){
 				finished=true;
+			}else{
+				key = ""+record[countyPop]+record[tractPop]+record[blockPop];
+				popRecords.put(key, record);
+				count++;
 			}
 		}
 		return;
@@ -532,7 +533,7 @@ public class Merger {
 	
 	public static void main(String[] args){
 		/**Merges all 50 states, given only two directory strings in the program arguments.*/
-		/*
+		
 		if(args == null || args.length<2 || args[0]==null || args[1]==null){
 			System.out.println("Copyright (C) 2009 Joshua Justice. Licensed under the GNU GPL.\n");
 			mergerHelp();
@@ -553,18 +554,13 @@ public class Merger {
 			Merger m_nd = new Merger(shapeFile, popGeo, false);
 			Merger m_all = new Merger(shapeFile, popGeo, true);
 			m_all.setPopFiles(popFile1, popFile2);
-			m_nd.merge(null);
-			m_all.merge(null);
-		}*/
-		Merger mb = new Merger("C:/Users/Joshua/TURIN/FultonCoBlocks/Fulton.dbf",
-				"C:/Users/Joshua/TURIN/GeorgiaPop/gageo.upl", false);
-		System.out.println("Block merger constructed.");
+			m_nd.merge();
+			m_all.merge();
+		}
+		/* Sample main method merge code
+		Merger mb = new Merger("/path/to/shapefile.dbf",
+				"/path/to/stategeo.upl", false);
 		mb.merge();
-		System.out.println("Block merger finished.");
-		Merger mt = new Merger("C:/Users/Joshua/TURIN/FultonCoTracts/Fulton.dbf",
-				"C:/Users/Joshua/TURIN/GeorgiaPop/gageo.upl", false);
-		System.out.println("Tract merger constructed.");
-		mt.merge();
-		System.out.println("Tract merger finished.");
+		*/
 	}
 }
