@@ -286,47 +286,17 @@ public class Merger {
 		}
 		return record;
 	}
-
-	/**
-	 * This function assumes that the first entry in the shapefile is in the desired county.
-	 * It will return the matching county number.
-	 */
-	public String getCountyNo(){
-		DBFReader shapeReader = null;
-		Object[] shapeRecord = null;
-		int sFields = 0;
-		try{
-			shapeReader = new DBFReader(shapeFile);
-			shapeRecord = shapeReader.nextRecord();
-			sFields = shapeReader.getFieldCount();
-			DBFField[] shapeFields = new DBFField[sFields];
-			for(int i=0; i<sFields; i++){
-				shapeFields[i] = shapeReader.getField(i);
-			}
-			setUpFieldNumbers(shapeFields);
-			if(shapeRecord[countyShape]!=null){
-				return String.valueOf(shapeRecord[countyShape]);
-			}
-		}catch(DBFException e){
-			System.out.println("Could not read the shapefile!");
-		}
-		
-		return null;
-	}
 	
 	/** 
-	 * @param countyNo The number of the county in the Census data. Use null to get the whole state.
-	 * 
-	 *  Merges the files in-memory. The countyNo is the number of the county in the Census data. 
-	 *  
-	 *  Use getCountyNo() function to get that value if it is unknown.
+	 *  Merges the files in-memory. 
+	 *  Requires the heap size to be large enough to handle the entire state. 
 	 *  
 	 * 	The code only cares about what rows are in the shapefile.
 	 *  So if you want county data, merge the county shapefile with the
 	 *  state population header file. 
 	 *  You'll get a combined file that only has the county data.
 	 */
-	public void merge(String countyNo){
+	public void merge(){
 		if(useRace==true && (popFile1 == null || popFile2 == null)){
 			throw new IllegalArgumentException("Cannot use racial data without first setting the files.");
 		}
@@ -397,7 +367,7 @@ public class Merger {
 		 * Inner loop: Scan through the population file to get the matching information.
 		 */
 		int rCount = shapeReader.getRecordCount();
-		setUpHashMap(useRace, rCount, countyNo);
+		setUpHashMap(useRace, rCount);
 		for(int i=0; i<rCount; i++){
 			try{
 				shapeRecord = shapeReader.nextRecord();
@@ -441,7 +411,7 @@ public class Merger {
 	 * Make sure to increase the JVM max heap size!
 	 * 
 	 */
-	private void setUpHashMap(boolean useRace, int capacity, String countyNo){
+	private void setUpHashMap(boolean useRace, int capacity){
 		popRecords = new HashMap<String, Object[]>(capacity);
 		try{
 			popGeo.seek(0);
@@ -474,20 +444,12 @@ public class Merger {
 				finished=true;
 			}
 			record = getRecordFromGeo(geoLine);
-			if(countyNo != null && record != null && record[countyPop].equals(countyNo)){
-				if(useRace){
-					record = addRaceToGeo(record, pop1Line, pop2Line);
-				}
-				key = ""+record[countyPop]+record[tractPop]+record[blockPop];
-				popRecords.put(key, record);count++;
-			}else if (countyNo == null && record != null){
-				if(useRace){
-					record = addRaceToGeo(record, pop1Line, pop2Line);
-				}
-				key = ""+record[countyPop]+record[tractPop]+record[blockPop];
-				popRecords.put(key, record);
-				count++;
+			if(useRace){
+				record = addRaceToGeo(record, pop1Line, pop2Line);
 			}
+			key = ""+record[countyPop]+record[tractPop]+record[blockPop];
+			popRecords.put(key, record);
+			count++;
 			if(record==null){
 				finished=true;
 			}
@@ -597,16 +559,12 @@ public class Merger {
 		Merger mb = new Merger("C:/Users/Joshua/TURIN/FultonCoBlocks/Fulton.dbf",
 				"C:/Users/Joshua/TURIN/GeorgiaPop/gageo.upl", false);
 		System.out.println("Block merger constructed.");
-		String bcn = mb.getCountyNo();
-		System.out.println("Block county # acquired.");
-		mb.merge(bcn);
+		mb.merge();
 		System.out.println("Block merger finished.");
 		Merger mt = new Merger("C:/Users/Joshua/TURIN/FultonCoTracts/Fulton.dbf",
 				"C:/Users/Joshua/TURIN/GeorgiaPop/gageo.upl", false);
 		System.out.println("Tract merger constructed.");
-		String tcn = mt.getCountyNo();
-		System.out.println("Tract county # acquired.");
-		mt.merge(tcn);
+		mt.merge();
 		System.out.println("Tract merger finished.");
 	}
 }
