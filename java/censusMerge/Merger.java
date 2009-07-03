@@ -570,6 +570,7 @@ public class Merger {
 	
 	public static void main(String[] args){
 		/**Merges all 50 states, given only two directory strings in the program arguments.*/
+		/*
 		if(args == null || args.length<2 || args[0]==null || args[1]==null){
 			System.out.println("Copyright (C) 2009 Joshua Justice. Licensed under the GNU GPL.\n");
 			mergerHelp();
@@ -592,6 +593,12 @@ public class Merger {
 			m_all.setPopFiles(popFile1, popFile2);
 			m_nd.merge(null);
 			m_all.merge(null);
-		}
+		}*/
+		Merger mb = new Merger("C:/Users/Joshua/TURIN/FultonCoBlocks/Fulton.dbf",
+				"C:/Users/Joshua/TURIN/GeorgiaPop/gageo.upl", false);
+		mb.merge(mb.getCountyNo());
+		Merger mt = new Merger("C:/Users/Joshua/TURIN/FultonCoTracts/Fulton.dbf",
+				"C:/Users/Joshua/TURIN/GeorgiaPop/gageo.upl", false);
+		mt.merge(mb.getCountyNo());
 	}
 }
