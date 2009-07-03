@@ -596,9 +596,17 @@ public class Merger {
 		}*/
 		Merger mb = new Merger("C:/Users/Joshua/TURIN/FultonCoBlocks/Fulton.dbf",
 				"C:/Users/Joshua/TURIN/GeorgiaPop/gageo.upl", false);
-		mb.merge(mb.getCountyNo());
+		System.out.println("Block merger constructed.");
+		String bcn = mb.getCountyNo();
+		System.out.println("Block county # acquired.");
+		mb.merge(bcn);
+		System.out.println("Block merger finished.");
 		Merger mt = new Merger("C:/Users/Joshua/TURIN/FultonCoTracts/Fulton.dbf",
 				"C:/Users/Joshua/TURIN/GeorgiaPop/gageo.upl", false);
-		mt.merge(mb.getCountyNo());
+		System.out.println("Tract merger constructed.");
+		String tcn = mt.getCountyNo();
+		System.out.println("Tract county # acquired.");
+		mt.merge(tcn);
+		System.out.println("Tract merger finished.");
 	}
 }
