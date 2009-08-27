@@ -22,10 +22,10 @@ import java.util.ArrayList;
  *	
  *
 */
-public class blockGraph {
+public class BlockGraph {
 	public ArrayList<Block> blockList;
 	
-	public blockGraph(){
+	public BlockGraph(){
 		this.blockList = null;
 	}
 	

@@ -20,7 +20,7 @@ package redistricting;
  *	
  *
 */
-public class District extends blockGraph{
+public class District extends BlockGraph{
 	public int districtNo;
 	
 	public District(int districtNo){
