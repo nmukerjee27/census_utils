@@ -48,6 +48,10 @@ public class BlockGraph {
 	
 	public void load(){
 		//first, loop through DBF file, add blocks from file
+		//there should be some way of specifying what extra fields are desired
+		//all undesired fields should be ignored- to save space
+		//the desired fields should go in Block's data[]
+		
 				
 		//second, loop through GAL file and add neighbors
 	}
@@ -56,5 +60,4 @@ public class BlockGraph {
 		//should support writing to a file somehow 
 	}
 	
-	//TODO: Either add another class for redistricting from 
 }
