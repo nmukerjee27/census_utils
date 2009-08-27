@@ -3,17 +3,17 @@ package redistricting;
 import java.util.ArrayList;
 
 public class blockGraph {
-	public ArrayList<Block> blocklist;
+	public ArrayList<Block> blockList;
 	
 	public blockGraph(){
-		this.blocklist = null;
+		this.blockList = null;
 	}
 	
 	public void addBlock(Block b){
-		blocklist.add(b);
+		blockList.add(b);
 	}
 
 	public void removeBlock(Block b){
-		blocklist.remove(b);
+		blockList.remove(b);
 	}
 }
