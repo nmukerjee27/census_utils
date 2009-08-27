@@ -24,9 +24,18 @@ import java.util.ArrayList;
 */
 public class BlockGraph {
 	public ArrayList<Block> blockList;
+	public ArrayList<District> distList;
 	
 	public BlockGraph(){
 		this.blockList = null;
+	}
+	
+	public void addDistrict(District d){
+		distList.add(d);
+	}
+	
+	public int getDistrictCount(){
+		return distList.size();
 	}
 	
 	public void addBlock(Block b){
@@ -44,7 +53,8 @@ public class BlockGraph {
 	}
 	
 	public void save(){
-		//should support writing to a file somehow	
+		//should support writing to a file somehow 
 	}
 	
+	//TODO: Either add another class for redistricting from 
 }

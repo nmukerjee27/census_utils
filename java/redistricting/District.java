@@ -1,4 +1,7 @@
 package redistricting;
+
+import java.util.ArrayList;
+
 /**	
  * Copyright (C) 2009
  * @author Joshua Justice
@@ -20,8 +23,9 @@ package redistricting;
  *	
  *
 */
-public class District extends BlockGraph{
+public class District{
 	public int districtNo;
+	public ArrayList<Block> blockList;
 	
 	public District(int districtNo){
 		this.districtNo=districtNo;
