@@ -34,7 +34,7 @@ public class Block {
 		this.recordNo=recordNo;
 		this.population=population;
 		this.area=area;
-		popDensity = (double) population / (double) area; 
+		this.popDensity = (double) population / (double) area; 
 	}
 	
 	public String toString(){

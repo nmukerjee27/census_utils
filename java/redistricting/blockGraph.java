@@ -39,14 +39,12 @@ public class BlockGraph {
 	
 	public void load(){
 		//first, loop through DBF file, add blocks from file
-		
-		
+				
 		//second, loop through GAL file and add neighbors
 	}
 	
 	public void save(){
-		//should support writing to a file somehow
-		
+		//should support writing to a file somehow	
 	}
 	
 }
